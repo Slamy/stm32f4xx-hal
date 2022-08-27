@@ -18,12 +18,7 @@ fn main() -> ! {
 
     let rcc = dp.RCC.constrain();
 
-    let clocks = rcc
-        .cfgr
-        .use_hse(25.MHz())
-        .sysclk(48.MHz())
-        .require_pll48clk()
-        .freeze();
+    let clocks = rcc.cfgr.sysclk((168).MHz()).pclk1((8).MHz()).freeze();
 
     let gpioa = dp.GPIOA.split();
 
